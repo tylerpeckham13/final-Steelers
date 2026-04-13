@@ -1,119 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Pittsburgh Steelers</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Steelers Trivia</title>
 </head>
 
-<body>
+<body style="text-align:center; background:black; color:#FFB612; font-family:Arial;">
 
-<div class="page">
+<h1>Steelers Trivia 🏈</h1>
 
-<!-- SCOREBOARD -->
-<div class="scoreboard">
-    <h3>Steelers 27 - Ravens 24</h3>
-    <p>Final | Week 12</p>
-</div>
+<p id="question"></p>
+<div id="answers"></div>
+<p id="score"></p>
 
-<!-- NAV -->
-<div class="nav">
-    <h2>STEELERS</h2>
-    <div>
-        <a href="#top">Home</a>
-        <a href="#players">Players</a>
-        <a href="#roster">Roster</a>
-        <a href="#video">Highlights</a>
-        <a href="#stats">Stats</a>
-        <a href="app.html">Play Game</a>
-    </div>
-</div>
+<button onclick="restart()">Restart</button>
 
-<!-- HERO -->
-<div class="hero" id="top">
-    <h1>Pittsburgh Steelers</h1>
-    <p>Six-Time Super Bowl Champions</p>
-</div>
+<audio id="correctSound" src="https://www.soundjay.com/buttons/sounds/button-4.mp3"></audio>
+<audio id="wrongSound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
 
-<!-- PLAYERS -->
-<div class="section" id="players">
-    <h2>Legends</h2>
+<script>
+const quiz = [
+    { q: "Who wore #43?", a: ["Brady","Polamalu","Rodgers"], correct: 1 },
+    { q: "Steelers colors?", a: ["Red","Black & Gold","Green"], correct: 1 },
+    { q: "Super Bowls won?", a: ["6","3","8"], correct: 0 }
+];
 
-    <div class="card-container">
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Troy_Polamalu_2011.jpg">
-            <h3>Troy Polamalu</h3>
-        </div>
+let current = 0;
+let score = 0;
 
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Terry_Bradshaw_2014.jpg">
-            <h3>Terry Bradshaw</h3>
-        </div>
+function loadQ() {
+    let q = quiz[current];
+    document.getElementById("question").innerHTML = q.q;
 
-        <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Franco_Harris_2007.jpg">
-            <h3>Franco Harris</h3>
-        </div>
-    </div>
-</div>
+    let html = "";
+    q.a.forEach((ans,i)=>{
+        html += `<button onclick="check(${i})">${ans}</button><br><br>`;
+    });
 
-<!-- ROSTER -->
-<div class="section" id="roster">
-    <h2>2026 Steelers Roster</h2>
+    document.getElementById("answers").innerHTML = html;
+}
 
-    <div class="roster-grid">
+function check(ans) {
+    if(ans === quiz[current].correct){
+        score++;
+        document.getElementById("correctSound").play();
+    } else {
+        document.getElementById("wrongSound").play();
+    }
 
-        <div class="roster-box">
-            <h3>Offense</h3>
-            <p><b>QB:</b> Aaron Rodgers, Mason Rudolph</p>
-            <p><b>RB:</b> Jaylen Warren, Kaleb Johnson</p>
-            <p><b>WR:</b> DK Metcalf, Roman Wilson</p>
-            <p><b>TE:</b> Pat Freiermuth, Darnell Washington</p>
-        </div>
+    current++;
 
-        <div class="roster-box">
-            <h3>Defense</h3>
-            <p><b>DL:</b> Cameron Heyward, Keeanu Benton</p>
-            <p><b>LB:</b> T.J. Watt, Alex Highsmith</p>
-            <p><b>CB:</b> Joey Porter Jr., Jalen Ramsey</p>
-            <p><b>S:</b> Minkah Fitzpatrick</p>
-        </div>
+    if(current < quiz.length){
+        loadQ();
+    } else {
+        document.getElementById("question").innerHTML = "Game Over!";
+        document.getElementById("answers").innerHTML = "";
+        document.getElementById("score").innerHTML = "Score: " + score + "/3";
+    }
+}
 
-        <div class="roster-box">
-            <h3>Special Teams</h3>
-            <p><b>K:</b> Chris Boswell</p>
-            <p><b>P:</b> Cameron Johnston</p>
-        </div>
+function restart(){
+    current = 0;
+    score = 0;
+    document.getElementById("score").innerHTML = "";
+    loadQ();
+}
 
-    </div>
-</div>
-
-<!-- VIDEO -->
-<div class="section" id="video">
-    <h2>Highlights</h2>
-
-    <iframe width="700" height="400"
-        src="https://www.youtube.com/embed/apXvAJOAsdU"
-        allowfullscreen>
-    </iframe>
-</div>
-
-<!-- TABLEAU -->
-<div class="section" id="stats">
-    <h2>NFL Stats Dashboard</h2>
-
-    <iframe src="https://public.tableau.com/views/NFLTeamStats/TeamStats?:embed=y&:display_count=yes"
-        width="900" height="600">
-    </iframe>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-    <p>© Steelers Nation</p>
-    <a href="#top">Back to Top</a>
-</div>
-
-</div>
+loadQ();
+</script>
 
 </body>
 </html>
