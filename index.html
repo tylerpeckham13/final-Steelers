@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pittsburgh Steelers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- SCOREBOARD HEADER -->
+<div class="scoreboard">
+    <h3>Steelers 27 - Ravens 24</h3>
+    <p>Final | Week 12</p>
+</div>
+
+<!-- NAVBAR -->
+<div class="nav">
+    <h2>STEELERS</h2>
+    <div>
+        <a href="#top">Home</a>
+        <a href="#players">Players</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#video">Highlights</a>
+        <a href="#stats">Stats</a>
+        <a href="app.html">Play Game</a>
+        <button onclick="toggleMode()">🌙</button>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="top">
+    <h1>Pittsburgh Steelers</h1>
+    <p>Six-Time Super Bowl Champions</p>
+</div>
+
+<!-- PLAYERS -->
+<div class="section" id="players">
+    <h2>Legends</h2>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Troy_Polamalu_2011.jpg">
+            <h3>Troy Polamalu</h3>
+        </div>
+
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Terry_Bradshaw_2014.jpg">
+            <h3>Terry Bradshaw</h3>
+        </div>
+
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Franco_Harris_2007.jpg">
+            <h3>Franco Harris</h3>
+        </div>
+    </div>
+</div>
+
+<!-- SCHEDULE TABLE -->
+<div class="section" id="schedule">
+    <h2>2025 Schedule</h2>
+
+    <table>
+        <tr>
+            <th>Week</th>
+            <th>Opponent</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Browns</td>
+            <td>Win</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Bengals</td>
+            <td>Loss</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Ravens</td>
+            <td>Win</td>
+        </tr>
+    </table>
+</div>
+
+<!-- NESTED LIST -->
+<div class="section">
+    <h2>Championship History</h2>
+    <ol>
+        <li>1970s Dynasty
+            <ul>
+                <li>Steel Curtain Defense</li>
+                <li>4 Super Bowls</li>
+            </ul>
+        </li>
+        <li>Modern Era
+            <ul>
+                <li>Ben Roethlisberger Era</li>
+                <li>2 Super Bowls</li>
+            </ul>
+        </li>
+    </ol>
+</div>
+
+<!-- VIDEO -->
+<div class="section" id="video">
+    <h2>Highlights</h2>
+    <iframe width="700" height="400"
+        src="https://www.youtube.com/embed/nN6M6r8yK8Y"
+        allowfullscreen>
+    </iframe>
+</div>
+
+<!-- TABLEAU -->
+<div class="section" id="stats">
+    <h2>NFL Dashboard</h2>
+
+    <iframe src="https://public.tableau.com/views/NFLTeamStats/TeamStats?:embed=y&:display_count=yes"
+        width="900" height="600">
+    </iframe>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>© Steelers Nation</p>
+    <a href="#top">Back to Top</a>
+</div>
+
+<script>
+function toggleMode() {
+    document.body.classList.toggle("light-mode");
+}
+</script>
+
+</body>
+</html>
