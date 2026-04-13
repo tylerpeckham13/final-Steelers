@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0b0b0b;
+    color: white;
+}
+
+/* LIGHT MODE */
+.light-mode {
+    background: #f4f4f4;
+    color: black;
+}
+
+/* SCOREBOARD */
+.scoreboard {
+    background: #111;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid #FFB612;
+}
+
+/* NAV */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: black;
+}
+
+.nav a {
+    color: #FFB612;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.nav button {
+    margin-left: 10px;
+}
+
+/* HERO */
+.hero {
+    background: url('https://upload.wikimedia.org/wikipedia/commons/5/5e/Heinz_Field.jpg') center/cover;
+    padding: 100px;
+    text-align: center;
+}
+
+/* SECTION */
+.section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* CARDS */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: #1c1c1c;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+/* TABLE */
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #FFB612;
+    padding: 10px;
+}
+
+/* FOOTER */
+.footer {
+    background: black;
+    padding: 20px;
+}
