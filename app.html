@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Steelers Trivia</title>
+</head>
+
+<body style="text-align:center; background:black; color:#FFB612; font-family:Arial;">
+
+<h1>Steelers Trivia 🏈</h1>
+
+<p id="question"></p>
+<div id="answers"></div>
+<p id="score"></p>
+
+<button onclick="restart()">Restart</button>
+
+<audio id="correctSound" src="https://www.soundjay.com/buttons/sounds/button-4.mp3"></audio>
+<audio id="wrongSound" src="https://www.soundjay.com/buttons/sounds/button-10.mp3"></audio>
+
+<script>
+const quiz = [
+    { q: "Who wore #43?", a: ["Brady","Polamalu","Rodgers"], correct: 1 },
+    { q: "Steelers colors?", a: ["Red","Black & Gold","Green"], correct: 1 },
+    { q: "Super Bowls won?", a: ["6","3","8"], correct: 0 }
+];
+
+let current = 0;
+let score = 0;
+
+function loadQ() {
+    let q = quiz[current];
+    document.getElementById("question").innerHTML = q.q;
+
+    let html = "";
+    q.a.forEach((ans,i)=>{
+        html += `<button onclick="check(${i})">${ans}</button><br><br>`;
+    });
+
+    document.getElementById("answers").innerHTML = html;
+}
+
+function check(ans) {
+    if(ans === quiz[current].correct){
+        score++;
+        document.getElementById("correctSound").play();
+    } else {
+        document.getElementById("wrongSound").play();
+    }
+
+    current++;
+
+    if(current < quiz.length){
+        loadQ();
+    } else {
+        document.getElementById("question").innerHTML = "Game Over!";
+        document.getElementById("answers").innerHTML = "";
+        document.getElementById("score").innerHTML = "Score: " + score + "/3";
+    }
+}
+
+function restart(){
+    current = 0;
+    score = 0;
+    document.getElementById("score").innerHTML = "";
+    loadQ();
+}
+
+loadQ();
+</script>
+
+</body>
+</html>
