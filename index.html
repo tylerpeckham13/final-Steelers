@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Pittsburgh Steelers</title>
+<title>Steelers ESPN Style</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -12,12 +11,7 @@
 
 <!-- TICKER -->
 <div class="ticker">
-<p>🏈 Steelers News: TJ Watt dominates | Playoff push heating up | Big AFC North matchup 🔥</p>
-</div>
-
-<!-- LIVE SCOREBOARD -->
-<div class="scoreboard">
-<h3 id="score">Steelers 20 - Ravens 17</h3>
+<p>🏈 Steelers News: Big Win | TJ Watt dominates | Playoff push 🔥</p>
 </div>
 
 <!-- NAV -->
@@ -25,59 +19,52 @@
 <h2>STEELERS</h2>
 <div>
 <a href="#top">Home</a>
-<a href="#players">Players</a>
+<a href="#news">News</a>
+<a href="#video">Video</a>
 <a href="#stats">Stats</a>
-<a href="app.html">Play Game</a>
 </div>
 </div>
 
 <!-- HERO -->
-<div class="hero" id="top">
-<h1>Pittsburgh Steelers</h1>
-<p>Six-Time Super Bowl Champions</p>
+<div class="hero">
+<h1>Steelers Dominate AFC North</h1>
+<p>Defense leads the way in huge win</p>
 </div>
 
-<!-- STATS COUNTERS -->
-<div class="section stats">
-<div class="stat"><h2 class="count" data-target="6">0</h2><p>Super Bowls</p></div>
-<div class="stat"><h2 class="count" data-target="24">0</h2><p>Hall of Famers</p></div>
-<div class="stat"><h2 class="count" data-target="90">0</h2><p>Seasons</p></div>
+<!-- NEWS GRID -->
+<div class="news-grid" id="news">
+
+<div class="news-card">
+<h3>Breaking News</h3>
+<p>TJ Watt records 3 sacks in win</p>
 </div>
 
-<!-- PLAYERS -->
-<div class="section" id="players">
+<div class="news-card">
+<h3>Game Recap</h3>
+<p>Steelers beat Ravens 27-24</p>
+</div>
+
+<div class="news-card">
+<h3>Player Spotlight</h3>
+<p>Minkah Fitzpatrick leads defense</p>
+</div>
+
+</div>
+
+<!-- PLAYER CARDS -->
+<div class="section">
 <h2>Legends</h2>
 
 <div class="card-container">
-
-<div class="card" onclick="openModal('Troy Polamalu - Legendary Safety')">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Troy_Polamalu_2011.jpg">
-<h3>Troy Polamalu</h3>
+<div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Troy_Polamalu_2011.jpg"><h3>Polamalu</h3></div>
+<div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Terry_Bradshaw_2014.jpg"><h3>Bradshaw</h3></div>
+<div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Franco_Harris_2007.jpg"><h3>Harris</h3></div>
 </div>
 
-<div class="card" onclick="openModal('Terry Bradshaw - Hall of Fame QB')">
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Terry_Bradshaw_2014.jpg">
-<h3>Terry Bradshaw</h3>
-</div>
-
-<div class="card" onclick="openModal('Franco Harris - Immaculate Reception')">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Franco_Harris_2007.jpg">
-<h3>Franco Harris</h3>
-</div>
-
-</div>
-</div>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-<div class="modal-content">
-<span onclick="closeModal()" class="close">&times;</span>
-<p id="modal-text"></p>
-</div>
 </div>
 
 <!-- VIDEO -->
-<div class="section">
+<div class="section" id="video">
 <h2>Highlights</h2>
 <iframe width="700" height="400"
 src="https://www.youtube.com/embed/apXvAJOAsdU"
@@ -85,60 +72,13 @@ allowfullscreen></iframe>
 </div>
 
 <!-- TABLEAU -->
-<div class="section">
-    <h2>NFL Dashboard</h2>
-
-    <iframe 
-        src="https://public.tableau.com/shared/5GJQYQ3ZK?:display_count=n&:origin=viz_share_link"
-        width="900" 
-        height="600"
-        frameborder="0">
-    </iframe>
-
-    <p>
-        If the dashboard doesn't load, 
-        <a href="https://public.tableau.com/app/profile/tableau.public/viz/SampleSuperstore/Dashboard1" target="_blank">
-            click here to view it
-        </a>.
-    </p>
-
+<div class="section" id="stats">
+<h2>Stats Dashboard</h2>
+<iframe src="https://public.tableau.com/shared/5GJQYQ3ZK?:embed=y"
+width="900" height="600"></iframe>
 </div>
 
-<script>
-
-// SCORE UPDATE
-let score = 20;
-setInterval(()=>{
-    score++;
-    document.getElementById("score").innerHTML = "Steelers " + score + " - Ravens 17";
-},5000);
-
-// COUNTERS
-document.querySelectorAll('.count').forEach(counter=>{
-    let update=()=>{
-        let target=+counter.getAttribute('data-target');
-        let count=+counter.innerText;
-        let inc=target/50;
-        if(count<target){
-            counter.innerText=Math.ceil(count+inc);
-            setTimeout(update,50);
-        } else {
-            counter.innerText=target;
-        }
-    }
-    update();
-});
-
-// MODAL
-function openModal(text){
-    document.getElementById("modal").style.display="block";
-    document.getElementById("modal-text").innerHTML=text;
-}
-function closeModal(){
-    document.getElementById("modal").style.display="none";
-}
-
-</script>
+</div>
 
 </body>
 </html>
